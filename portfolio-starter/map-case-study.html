@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#52796b">
+  <meta name="description" content="Case study for the Save Cantonese World Map Programs project.">
+  <title>Language Learning Program Map — LINDA WANG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f6f7f3;
+      --white: #ffffff;
+      --ink: #1e2924;
+      --muted: #747d77;
+      --sage: #52796b;
+      --deep: #31594c;
+      --soft-sage: #e9f0eb;
+      --pale-sage: #f0f5f1;
+      --lime: #d8ff86;
+      --line: #dfe5df;
+      --max: 1160px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 64px)); margin-inline: auto; }
+
+    /* Navigation */
+    .nav-wrap {
+      position: fixed;
+      top: 26px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      width: min(780px, calc(100% - 40px));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px 10px 20px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 8px 28px rgba(24, 56, 43, .06);
+      backdrop-filter: blur(12px);
+      font-size: 13px;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--deep);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-links a { opacity: .8; transition: opacity .2s; }
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 999px;
+      background: var(--deep);
+      color: white;
+      font-size: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 22px;
+      color: var(--ink);
+    }
+
+    /* Hero */
+    .case-hero {
+      padding: 150px 0 85px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--sage);
+      margin-bottom: 42px;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .eyebrow,
+    .kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--sage);
+    }
+
+    .eyebrow { margin-bottom: 16px; }
+
+    .case-hero h1 {
+      font: 600 clamp(48px, 7vw, 88px) / .98 'Manrope', sans-serif;
+      letter-spacing: -.07em;
+      max-width: 900px;
+      margin: 0 0 26px;
+    }
+
+    .case-hero h1 span { color: var(--sage); }
+
+    .hero-copy {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .hero-content {
+      min-width: 0;
+    }
+
+    .hero-layout .hero-image {
+      margin-top: 0;
+      max-height: 650px;
+    }
+
+    .hero-layout .hero-image img {
+      width: 100%;
+      height: 650px;
+      object-fit: contain;
+      object-position: center;
+      background: var(--pale-sage);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #56635b;
+      background: var(--paper);
+    }
+
+    .hero-image {
+      margin-top: 58px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--pale-sage);
+      box-shadow: 0 24px 70px rgba(31, 53, 43, .08);
+    }
+
+    .hero-image img,
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* General sections */
+    .section,
+    .visual-section,
+    .process-section {
+      padding: 105px 0;
+    }
+
+    .section.alt,
+    .visual-section.alt {
+      background: var(--white);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    h2 {
+      font: 500 clamp(34px, 4.8vw, 58px) / 1.05 'Manrope', sans-serif;
+      letter-spacing: -.065em;
+      margin: 12px 0 0;
+    }
+
+    .copy {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .copy p { margin: 0 0 18px; }
+    .copy p:last-child { margin-bottom: 0; }
+
+    .highlight {
+      background: var(--soft-sage);
+      border: 1px solid #cfddd4;
+      border-radius: 20px;
+      padding: 25px 27px;
+      margin-top: 28px;
+      color: var(--deep);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Problem section — deliberately muted, not orange */
+    .problem {
+      background: var(--soft-sage);
+      border-top: 1px solid #d8e4dc;
+      border-bottom: 1px solid #d8e4dc;
+    }
+
+    .problem .kicker { color: var(--deep); }
+    .problem h2 { max-width: 600px; }
+    .problem .copy { color: #5e6963; }
+
+    .problem-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .problem-point {
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid #d6e1d9;
+      border-radius: 16px;
+    }
+
+    .problem-point strong {
+      display: block;
+      margin-bottom: 5px;
+      font: 600 16px 'Manrope', sans-serif;
+    }
+
+    .problem-point span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* Process */
+    .process-intro {
+      max-width: 700px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .process-card {
+      position: relative;
+      min-height: 220px;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+
+    .process-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      color: var(--deep);
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .process-card h3 {
+      font: 600 19px 'Manrope', sans-serif;
+      letter-spacing: -.035em;
+      margin: 0 0 10px;
+    }
+
+    .process-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Client meetings / requirements */
+    .meeting-section { background: var(--deep); color: white; }
+    .meeting-section .kicker { color: var(--lime); }
+    .meeting-section h2 { max-width: 600px; }
+    .meeting-section .copy { color: #dce8df; }
+
+    .decision-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .decision {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .decision:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
+
+    .decision-number {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(216, 255, 134, .16);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .decision strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .decision span {
+      color: #cbd8d0;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* Visuals */
+    .visual-section .section-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .section-top p {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .slide {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(32, 57, 45, .06);
+    }
+
+    .slide-caption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* Feature evolution */
+    .feature-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .feature:last-child { border-bottom: 1px solid var(--line); }
+
+    .feature-num {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .feature span {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Design system / tech */
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .stack .pill {
+      font-size: 12px;
+      background: var(--white);
+      padding: 11px 14px;
+    }
+
+    /* Impact */
+    .impact {
+      background: var(--pale-sage);
+      border-top: 1px solid #dce7df;
+      border-bottom: 1px solid #dce7df;
+    }
+
+    .impact .kicker { color: var(--sage); }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .impact-card {
+      border: 1px solid #d7e2da;
+      border-radius: 20px;
+      padding: 28px;
+      background: var(--white);
+    }
+
+    .impact-card strong {
+      display: block;
+      font: 600 clamp(28px, 4vw, 44px) / 1 'Manrope', sans-serif;
+      letter-spacing: -.05em;
+      margin-bottom: 10px;
+      color: var(--deep);
+    }
+
+    .impact-card span {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Closing */
+    .closing { padding: 105px 0; }
+
+    .closing-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .closing h2 { max-width: 700px; }
+
+    .closing p {
+      max-width: 380px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #1f3026;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: var(--deep);
+      color: #dce8df;
+      padding: 25px 0;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer-links { display: flex; gap: 25px; }
+    .footer a:hover { color: var(--lime); }
+    .copyright { opacity: .65; }
+
+    @media (max-width: 900px) {
+      .process { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, var(--max)); }
+      .nav-wrap { top: 14px; }
+      .nav { width: calc(100% - 28px); padding: 10px 13px; }
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 57px;
+        left: 0;
+        right: 0;
+        padding: 18px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: 0 15px 30px rgba(29, 52, 37, .1);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 4px; }
+      .nav-cta { display: inline-flex; justify-content: center; }
+
+      .case-hero { padding: 125px 0 60px; }
+      .case-hero h1 { font-size: clamp(46px, 13vw, 72px); }
+      .hero-copy { font-size: 15px; }
+
+      .section,
+      .visual-section,
+      .process-section,
+      .closing { padding: 75px 0; }
+
+      .hero-layout { grid-template-columns: 1fr; gap: 38px; }
+      .hero-layout .hero-image { max-height: none; }
+      .hero-layout .hero-image img { height: auto; max-height: 620px; }
+
+      .section-grid { grid-template-columns: 1fr; gap: 32px; }
+      .process,
+      .two-col,
+      .impact-grid { grid-template-columns: 1fr; }
+      .visual-section .section-top { display: block; }
+      .section-top p { margin-top: 18px; }
+      .closing-inner { display: block; }
+      .footer-row { flex-wrap: wrap; }
+      .footer-links { gap: 15px; flex-wrap: wrap; }
+      .copyright { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  
+    .slide-placeholder { min-height: 220px; display: flex; align-items: center; justify-content: center; padding: 32px; text-align: center; background: #eef2ef; color: #5f6d64; border-radius: 18px; }
+  </style>
+</head>
+
+<body>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html#home">LINDA WANG</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="index.html#work">Work</a>
+        <a href="art.html">Art</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="index.html#work">Back to Work</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 01: Context -->
+    <section class="case-hero">
+      <div class="wrap">
+        <a class="back-link" href="index.html#work">← Back to selected work</a>
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="eyebrow">Case Study · UI/UX Design · Web App</div>
+            <h1>Save Cantonese <span>World Map Programs</span></h1>
+            <p class="hero-copy">
+              Designing a clearer way for people to find Cantonese learning programs — while helping Save Cantonese move from a developer-dependent update process toward a more maintainable system.
+            </p>
+            <div class="meta">
+              <span class="pill">Save Cantonese</span>
+              <span class="pill">NOVA F25 Onboarding Project</span>
+              <span class="pill">Product Design + Engineering</span>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="map-case-study-assets/world-map-programs.jpg" alt="World Map of Cantonese Programs interface with map and program table">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">01 · Context</div>
+          <h2>Start with the people and the problem.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            Save Cantonese is a nonprofit dedicated to strengthening the Cantonese-speaking and learning community. Its grassroots advocacy promotes education through local language programs, connects the Cantonese diaspora worldwide, and supports the protection of culture and identity.
+          </p>
+          <p>
+            The existing World Map was intended to help learners discover Cantonese programs around the world. But the larger challenge was not simply making a map look better: the organization also needed a way to keep program information accurate and current.
+          </p>
+          <div class="highlight">
+            The project therefore became a two-sided design problem: make discovery easier for learners, and make updates easier for the people maintaining the map.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02: Specific problems -->
+    <section class="section problem">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">02 · The Problems</div>
+          <h2>We had to solve the workflow, not just the interface.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            The project brief identified a major operational bottleneck: submissions required R-code knowledge to review and publish. That created delays, a growing backlog, and an inefficient workflow that depended on developers.
+          </p>
+          <div class="problem-points">
+            <div class="problem-point">
+              <strong>Program discovery was difficult</strong>
+              <span>Learners could struggle to find Cantonese classes and programs near them, creating a need for a clearer geographic and database experience.</span>
+            </div>
+            <div class="problem-point">
+              <strong>Updates were technically dependent</strong>
+              <span>Community-submitted programs could not be easily reviewed and published without technical knowledge.</span>
+            </div>
+            <div class="problem-point">
+              <strong>Information could become outdated</strong>
+              <span>The organization needed a more systematic way to verify program websites and keep the public map current.</span>
+            </div>
+            <div class="problem-point">
+              <strong>One view was not enough</strong>
+              <span>The experience needed to support both geographic exploration and a structured list of program information.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: Process -->
+    <section class="process-section">
+      <div class="wrap">
+        <div class="kicker">03 · Process</div>
+        <h2>From client conversations to a workable system.</h2>
+        <p class="process-intro">
+          The design process centered on understanding what Save Cantonese actually needed to maintain the map. Through client conversations, we translated the organization's pain points into concrete product requirements before deciding on the final interface.
+        </p>
+
+        <div class="process">
+          <article class="process-card">
+            <div class="process-number">01</div>
+            <h3>Understand</h3>
+            <p>Clarify how programs were currently submitted, reviewed, published, and discovered — and where the existing workflow was breaking down.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-number">02</div>
+            <h3>Align with the client</h3>
+            <p>Use client conversations to distinguish the organization's must-haves from interface ideas: reliable data, easier review, and a map that learners could navigate intuitively.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-number">03</div>
+            <h3>Explore</h3>
+            <p>Compare existing map patterns and identify useful conventions for markers, clustering, filters, side panels, and list-based access.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-number">04</div>
+            <h3>Build the system</h3>
+            <p>Connect the public-facing map and table with verification and approval logic so the design addressed both the learner and the organization maintaining it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: Client meetings / decisions -->
+    <section class="section meeting-section">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">04 · Client Alignment</div>
+          <h2>The client conversations shaped the product requirements.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            Rather than treating the map as a purely visual redesign, we used client discussions to focus the project on the operational issues behind it. The resulting direction connected what learners needed to see with what Save Cantonese needed to manage behind the scenes.
+          </p>
+          <div class="decision-list">
+            <div class="decision">
+              <div class="decision-number">01</div>
+              <div>
+                <strong>Make program discovery flexible</strong>
+                <span>People should be able to browse geographically while also using a table and filters to find specific programs.</span>
+              </div>
+            </div>
+            <div class="decision">
+              <div class="decision-number">02</div>
+              <div>
+                <strong>Reduce dependence on technical review</strong>
+                <span>New submissions should pass through a systematic verification and approval flow rather than relying on manual developer intervention for every update.</span>
+              </div>
+            </div>
+            <div class="decision">
+              <div class="decision-number">03</div>
+              <div>
+                <strong>Keep program details connected to location</strong>
+                <span>Selecting a program should reveal useful details without forcing the user to abandon the geographic context.</span>
+              </div>
+            </div>
+            <div class="decision">
+              <div class="decision-number">04</div>
+              <div>
+                <strong>Design for information that changes</strong>
+                <span>Website verification and a more systematic data workflow became part of the product solution, not an afterthought.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05: Competitive analysis -->
+    <section class="visual-section alt">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="kicker">05 · Exploration</div>
+            <h2>Then we looked outward before designing inward.</h2>
+          </div>
+          <p>
+            Competitive analysis helped us decide which map conventions were worth keeping and which patterns would make the experience harder to use.
+          </p>
+        </div>
+        <div class="slide">
+          <img src="map-case-study-assets/slide-6-crop.png" alt="Map layouts and filtering patterns reviewed during competitive analysis">
+          <div class="slide-caption">
+            <strong>What we considered:</strong> layouts showing multiple programs, target points, geographic clustering, and filters for different categories.
+            <br><br>
+            <strong>What we wanted to avoid:</strong> a single way to access programs, a complicated or nonfunctional sidebar, and removing the list format.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: Solution -->
+    <section class="visual-section">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="kicker">06 · Solution</div>
+            <h2>The solution became a map + database + verification workflow.</h2>
+          </div>
+          <p>
+            The final direction combined a refined public interface with a more systematic process for reviewing and updating submitted programs.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">
+            <div class="feature-num">01</div>
+            <div>
+              <strong>Automated verification</strong>
+              <span>The system checks whether a submitted program website is live and accessible before the program moves through the approval pipeline.</span>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-num">02</div>
+            <div>
+              <strong>Map + table access</strong>
+              <span>Approved programs are represented geographically and in a structured table, giving users two complementary ways to browse.</span>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-num">03</div>
+            <div>
+              <strong>Focused program details</strong>
+              <span>A side panel keeps the selected program's details visible alongside the map instead of separating the information from its location.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07: Interaction details -->
+    <section class="visual-section alt">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="kicker">07 · Interaction Design</div>
+            <h2>Designing the ways people actually search.</h2>
+          </div>
+          <p>
+            The map supports filtering by audience, city, state or province, and country, while markers communicate program categories directly on the map.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="slide">
+            <img src="map-case-study-assets/slide-8-crop.png" alt="Map markers and audience categories">
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-top:24px">
+          <div class="slide">
+            <img src="map-case-study-assets/slide-10-crop.png" alt="Filtered side panel view">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08: Design system -->
+    <section class="section">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">08 · Design System</div>
+          <h2>A visual system built for a data-heavy map.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            The visual system establishes a clear type hierarchy and uses color to distinguish the audience categories throughout the map. The full palette and its application are shown in the design system below.
+          </p>
+        </div>
+      </div>
+
+      <div class="wrap" style="margin-top:55px">
+        <div class="slide">
+          <img src="map-case-study-assets/slide-12-crop.png" alt="Cantonese programs map design system">
+        </div>
+      </div>
+    </section>
+
+    <!-- 09: Technical workflow -->
+    <section class="section alt">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">09 · Technical Workflow</div>
+          <h2>Designing the experience meant designing the pipeline too.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            The implementation connected the interface to a data workflow using Next.js, Tailwind CSS, MapLibre GL, Google Apps Script, and Google Sheets.
+          </p>
+          <p>
+            This technical approach supported the larger product goal: making the map easier to maintain while keeping the public-facing experience clear and searchable.
+          </p>
+          <div class="stack">
+            <span class="pill">Next.js</span>
+            <span class="pill">Tailwind CSS</span>
+            <span class="pill">MapLibre GL</span>
+            <span class="pill">Google Apps Script</span>
+            <span class="pill">Google Sheets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10: Impact -->
+    <section class="section impact">
+      <div class="wrap">
+        <div class="kicker">10 · Impact</div>
+        <h2>The result was a faster, more maintainable update cycle.</h2>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <strong>3–5 min</strong>
+            <span>Reported total deployment/update time after the new workflow, compared with roughly 2 hours previously.</span>
+          </div>
+          <div class="impact-card">
+            <strong>~34</strong>
+            <span>The deck references 14 Google Form updates and roughly 20 Slack updates addressed through the new automated email workflow.</span>
+          </div>
+          <div class="impact-card">
+            <strong>Nightly</strong>
+            <span>The map moved from a previous 1–2 times per year update cadence toward realtime nightly updates with website verification.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11: Reflection -->
+    <section class="section alt">
+      <div class="wrap section-grid">
+        <div>
+          <div class="kicker">11 · Reflection</div>
+          <h2>The biggest design decision was treating maintenance as part of UX.</h2>
+        </div>
+        <div class="copy">
+          <p>
+            The project started as a map experience, but the process revealed that the quality of the map depended on the workflow behind it. A useful public interface was only one part of the solution; the organization also needed a repeatable way to verify and update the information users rely on.
+          </p>
+          <p>
+            That led to a product direction where discovery, filtering, program details, verification, and data maintenance work together instead of being treated as separate pieces.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap closing-inner">
+        <div>
+          <div class="kicker">Next project</div>
+          <h2>See the rest of my selected work.</h2>
+          <a class="btn" href="index.html#work">Back to selected work ↗</a>
+        </div>
+        <p>
+          This case study is based on the NOVA F25 onboarding presentation for Save Cantonese World Map Programs. Project details and impact figures are presented as documented in that deck.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="index.html#home" style="color:#fff">LINDA WANG</a>
+      <div class="footer-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#work">Work</a>
+        <a href="art.html">Art</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="copyright">© <span id="year"></span> LINDA WANG</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '×' : '☰';
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

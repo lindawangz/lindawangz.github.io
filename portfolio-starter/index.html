@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="#52796b" name="theme-color"/>
+  <meta content="A multidisciplinary product design and software engineering portfolio." name="description"/>
+  <title>
+   LINDA WANG — Product Designer &amp; Engineer
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root{--paper:#f6f7f3;--white:#fff;--ink:#1e2924;--muted:#747d77;--sage:#52796b;--deep:#31594c;--lime:#d8ff86;--line:#dfe5df;--max:1160px;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 64px));margin-inline:auto}.nav-wrap{position:fixed;top:26px;left:0;right:0;z-index:1000}.nav{width:min(780px,calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 20px;border:1px solid rgba(255,255,255,.5);border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 8px 28px #18382b0b;backdrop-filter:blur(12px);font-size:13px}.brand{font-weight:600;letter-spacing:-.02em;color:#31594c}.nav-links{display:flex;align-items:center;gap:27px}.nav-links a{opacity:.8;transition:opacity .2s}.nav-links a:hover{opacity:1}.nav-cta{padding:10px 17px;border-radius:999px;background:var(--deep);color:white;font-size:12px}.menu-toggle{display:none;background:none;border:0;font-size:22px;color:var(--ink)}
+.hero{min-height:100vh;min-height:100svh;background-image:linear-gradient(180deg,rgba(7,19,14,.22),rgba(7,19,14,.42)),url('Screenshot 2025-10-03 212419 (1).png') ;background-position:center 48%;background-size:cover;background-repeat:no-repeat;color:#f9fbf8;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:130px 24px 92px}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(7,19,14,0) 0%,rgba(7,19,14,.12) 100%);pointer-events:none}.hero-inner{position:relative;width:min(820px,100%);text-align:center;margin-top:18px}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;opacity:.75;margin-bottom:26px}.hero h1{font:600 clamp(38px,6.2vw,76px)/1.06 'Manrope',sans-serif;letter-spacing:-.065em;margin:0 auto 25px;max-width:1040px;text-wrap:balance;text-shadow:0 2px 28px rgba(0,0,0,.24)}.hero p{font-size:15px;line-height:1.75;color:#e3ebe5;max-width:520px;margin:0 auto}.hero-actions{display:flex;justify-content:center;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border-radius:999px;border:1px solid #ffffff6e;font-size:13px;font-weight:600;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn-light{background:var(--lime);border-color:var(--lime);color:#1f3026}.btn-ghost{color:#fff;background:#ffffff0a}.hero-note{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.04em;color:#e1e9e3;opacity:.8;white-space:nowrap}
+.trust{background:#fff;border-bottom:1px solid var(--line);padding:22px 0}.trust-row{display:flex;align-items:center;justify-content:space-between;gap:25px}.trust-label{font-size:12px;color:var(--muted);white-space:nowrap}.logos{display:flex;align-items:center;justify-content:space-around;gap:35px;flex:1;color:#8c958e;font:700 18px 'Manrope',sans-serif;letter-spacing:-.04em}.logos span:nth-child(2){font-size:14px;letter-spacing:.04em}.logos span:nth-child(3){font-size:23px}.logos span:nth-child(4){font-size:16px}
+.section{padding:110px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.13em;
+  color:var(--sage);margin-bottom:14px}.section h2{font:500 clamp(36px,5vw,62px)/1.05 'Manrope',sans-serif;letter-spacing:-.065em;margin:0}.section-intro{max-width:340px;color:var(--muted);
+    font-size:14px;line-height:1.7;margin:0}.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch;gap:28px}.project-card-link
+    {display:block;color:inherit;cursor:pointer}.project-card-link .project{height:100%}.project-card-link:focus-visible{outline:3px solid var(--lime);outline-offset:5px;border-radius:var(--radius)}.project{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s}.project:hover{transform:translateY(-5px);box-shadow:0 18px 45px #213b2c0b}.project-visual{height:290px;margin:10px 10px 0;border-radius:15px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center} .project-photo{width:100%;height:100%;display:block;object-fit:cover;object-position:center}.project-photo.photo-top{object-position:center top}.visual-dashboard{background:#eef1f7}.visual-pet{background:#d9eee3}.visual-finance{background:#e5edf9}.visual-climb{background:#e8e5d9}.visual-label{position:absolute;left:18px;top:16px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#64736b}.window{width:77%;height:73%;background:#fff;border:1px solid #dce2e3;border-radius:10px;box-shadow:0 20px 45px #162e281c;overflow:hidden;transform:rotate(-2deg)}.window-top{height:25px;border-bottom:1px solid #e8eceb;display:flex;align-items:center;gap:5px;padding:0 10px}.dot{width:5px;height:5px;border-radius:50%;background:#c9d0ce}.window-body{display:grid;grid-template-columns:26% 1fr;height:calc(100% - 25px)}.side{background:#f7f8fa;border-right:1px solid #edf0ef;padding:13px 9px}.side i{display:block;height:5px;background:#dfe5e4;border-radius:5px;margin:0 0 10px}.side i:first-child{background:#789b8b;width:70%}.dash-content{padding:15px}.tiny-title{font-size:9px;font-weight:700;margin-bottom:11px}.metric-row{display:flex;gap:7px}.metric{height:48px;flex:1;border:1px solid #edf0f0;border-radius:5px;padding:8px}.metric b{display:block;font-size:10px}.metric span{display:block;height:4px;width:55%;background:#b6d2c1;border-radius:4px;margin-top:8px}.chart{height:65px;margin-top:10px;border-radius:5px;background:linear-gradient(160deg,transparent 46%,#a7c8b5 47%,#a7c8b5 49%,transparent 50%),linear-gradient(180deg,#f4f8f5,#fff);border:1px solid #edf0ef}.pet-ui{width:74%;height:77%;background:#fff;border-radius:14px;box-shadow:0 20px 45px #2a47351c;overflow:hidden;transform:rotate(2deg)}.pet-photo{height:54%;background:radial-gradient(ellipse at 52% 45%,#d3a16b 0 13%,transparent 14%),radial-gradient(ellipse at 44% 42%,#4a6548 0 17%,transparent 18%),linear-gradient(130deg,#94b783,#d5e4b4 45%,#69936a)}.pet-bar{padding:12px 14px}.pet-bar b{font-size:12px}.pet-bar p{font-size:8px;color:#89918b;margin:5px 0 10px}.chips{display:flex;gap:5px}.chips i{display:block;width:42px;height:22px;border-radius:5px;background:#eaf1e8}.finance-ui{width:70%;height:82%;border-radius:13px;background:#fff;box-shadow:0 20px 45px #203e5d18;padding:19px;transform:rotate(-2deg)}.finance-ui .balance{background:#eaf1ff;border-radius:10px;padding:15px;margin-bottom:10px}.balance small{font-size:9px;color:#70809a}.balance strong{display:block;font:700 25px 'Manrope';margin-top:6px;color:#315f9a}.bars{height:80px;display:flex;align-items:end;gap:8px;padding:10px 14px;border-bottom:1px solid #edf0f3}.bars i{display:block;flex:1;background:#9db9e5;border-radius:5px 5px 0 0}.bars i:nth-child(1){height:35%}.bars i:nth-child(2){height:70%}.bars i:nth-child(3){height:48%}.bars i:nth-child(4){height:90%}.bars i:nth-child(5){height:58%}.climb-art{width:78%;height:76%;position:relative;background:linear-gradient(150deg,#f7f2e6,#b6c5a9);border-radius:12px;overflow:hidden}.climb-art:before{content:"";position:absolute;width:180px;height:180px;border:1px solid #82977b;border-radius:50%;right:-20px;top:-40px;box-shadow:0 0 0 25px #ffffff24,0 0 0 50px #ffffff20}.climb-phone{position:absolute;left:17%;top:8%;height:85%;width:32%;border:5px solid #202622;border-radius:23px;background:#fff;box-shadow:0 12px 28px #24352630;padding:10px 7px}.climb-phone .screen-top{height:6px;width:40%;background:#1f2824;border-radius:9px;margin:0 auto 12px}.climb-phone .screen-image{height:45%;border-radius:8px;background:linear-gradient(150deg,#5d8364,#c9d7b6)}.climb-phone .screen-line{height:6px;background:#e2e8df;border-radius:5px;margin-top:9px}.project-info{padding:22px 23px 24px}.project-title-row{display:flex;align-items:center;justify-content:space-between;gap:15px}.project h3{font:600 22px 'Manrope',sans-serif;letter-spacing:-.04em;margin:0}.arrow{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:background .2s,transform .2s}.project:hover .arrow{background:var(--lime);transform:rotate(45deg)}.project-info p{font-size:13px;line-height:1.7;color:var(--muted);margin:11px 0 18px;max-width:500px}.tags{display:flex;flex-wrap:wrap;gap:7px}.tag{border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:10px;color:#56635b}
+.about{background:#fff}.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}.about-visual{min-height:420px;border-radius:24px;background:#e9eee7;position:relative;overflow:hidden;display:grid;place-items:center}.about-sphere{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#f8f9f0,#a9c6b3 60%,#5b8671);box-shadow:inset -20px -25px 40px #315b4a1c,0 30px 55px #45674b20}.about-orb{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#d8e6c6 70%,#b1c79c)}.about-orb.one{width:68px;height:68px;top:16%;left:17%}.about-orb.two{width:95px;height:95px;bottom:14%;right:12%;background:radial-gradient(circle at 30% 25%,#fff,#c5d6e9 75%,#a5b8d2)}.about-copy h2{margin-bottom:24px}.about-copy p{color:var(--muted);font-size:15px;line-height:1.9;max-width:590px}.skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.skill{padding:9px 13px;border-radius:999px;background:#f5f7f3;border:1px solid var(--line);font-size:11px}.experience{padding-top:90px}.experience-row{display:grid;grid-template-columns:1fr 1fr;gap:45px;border-top:1px solid var(--line);padding:25px 0}.experience-row:last-child{border-bottom:1px solid var(--line)}.experience-role{font-weight:600;font-size:17px}.experience-company{font-size:13px;color:var(--muted);margin-top:6px}.experience-date{font-size:12px;color:var(--sage);text-align:right}.contact{background:var(--sage);color:#fff;padding:100px 0}.contact-inner{display:flex;align-items:end;justify-content:space-between;gap:40px}.contact h2{font:500 clamp(40px,6vw,74px)/1.02 'Manrope';letter-spacing:-.07em;max-width:720px;margin:0}.contact p{color:#e0e9e3;font-size:14px;line-height:1.7;max-width:430px}.contact .btn{margin-top:16px}.footer{background:var(--deep);color:#dce8df;padding:25px 0}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:12px}.footer-links{display:flex;gap:25px}.footer a:hover{color:var(--lime)}.copyright{opacity:.65}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:760px){.wrap{width:min(100% - 36px,var(--max))}.nav-wrap{top:14px}.nav{width:calc(100% - 28px);padding:10px 13px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:57px;left:0;right:0;padding:18px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 15px 30px #1d34251a;flex-direction:column;align-items:stretch;gap:18px}.nav-links.open{display:flex}.nav-links a{padding:4px}.nav-cta{display:inline-flex;justify-content:center}.hero{min-height:620px;padding:130px 22px 95px}.hero h1{font-size:clamp(45px,12vw,74px)}.hero p{font-size:14px}.trust-row{align-items:flex-start;flex-direction:column;gap:18px}.logos{width:100%;gap:16px;flex-wrap:wrap;justify-content:space-between;font-size:15px}.section{padding:78px 0}.section-head{display:block;margin-bottom:28px}.section-intro{margin-top:17px}.projects{grid-template-columns:1fr;gap:18px}.project-visual{height:250px}.about-grid{grid-template-columns:1fr;gap:35px}.about-visual{min-height:300px}.about-sphere{width:165px;height:165px}.experience-row{grid-template-columns:1fr;gap:12px}.experience-date{text-align:left}.contact{padding:75px 0}.contact-inner{display:block}.contact p{margin-top:24px}.footer-row{flex-wrap:wrap}.footer-links{gap:15px;flex-wrap:wrap}.copyright{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+ </head>
+ <body>
+  <header class="nav-wrap">
+   <nav aria-label="Main navigation" class="nav">
+    <a class="brand" href="#home">
+     LINDA WANG
+    </a>
+    <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">
+     ☰
+    </button>
+    <div class="nav-links">
+     <a href="#work">
+      Work
+     </a>
+     <a href="art.html">
+      Art
+     </a>
+     <a href="about.html">
+      About
+     </a>
+     <a class="nav-cta" href="mailto:lindawang1@gmail.com">
+      Contact
+     </a>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <section class="hero" id="home">
+    <div class="hero-inner">
+     <h1>
+      Hi, I'm
+      <span style="color:var(--lime)">
+       Linda Wang
+      </span>
+     </h1>
+     <p>
+      Building thoughtful digital experiences through multidisciplinary design and development.
+     </p>
+     <div class="hero-actions">
+      <a class="btn btn-light" href="#work">
+       Explore my work
+      </a>
+      <a class="btn btn-ghost" href="mailto:lindawang1@gmail.com">
+       Contact
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="work">
+    <div class="wrap">
+     <div class="section-head reveal">
+      <div>
+       <div class="kicker">
+        Selected work
+       </div>
+       <h2>
+       </h2>
+      </div>
+      <p class="section-intro">
+      </p>
+     </div>
+     <div class="projects">
+      <a aria-label="View Medical Inventory System case study" class="project-card-link" href="./mending-kids-case-study.html">
+       <article class="project reveal">
+       <div class="project-visual visual-pet">
+        <img alt="Mending Kids dashboard screenshot" class="project-photo photo-top" src="project-mending-kids.png"/>
+       </div>
+       <div class="project-info">
+        <div class="project-title-row">
+         <h3>
+          Medical Inventory System
+         </h3>
+         <span aria-hidden="true" class="arrow">
+          ↗
+         </span>
+        </div>
+        <p>
+         A web-based inventory management system that lets Mending Kids staff log, categorize, and track a medical supply’s journey from donation to deployment.
+        </p>
+        <div class="tags">
+         <span class="tag">
+          Product Design
+         </span>
+         <span class="tag">
+          Data Analytics
+         </span>
+         <span class="tag">
+          UX Research
+         </span>
+        </div>
+       </div>
+       </article>
+      </a>
+      <a aria-label="View Language Learning Program Map case study" class="project-card-link" href="./map-case-study.html">
+       <article class="project reveal">
+        <div class="project-visual visual-pet">
+         <img alt="World Map of Cantonese Programs project screenshot" class="project-photo photo-top" src="project-cantonese-map.jpg"/>
+        </div>
+        <div class="project-info">
+         <div class="project-title-row">
+          <h3>
+           Language Learning Program Map
+          </h3>
+          <span aria-hidden="true" class="arrow">
+           ↗
+          </span>
+         </div>
+         <p>
+          A system for verifying newly submitted SaveCanto language learning programs with a refined map and program display.
+         </p>
+         <div class="tags">
+          <span class="tag">
+           UI/UX Design
+          </span>
+          <span class="tag">
+           Web App
+          </span>
+          <span class="tag">
+           Prototyping
+          </span>
+         </div>
+        </div>
+       </article>
+      </a>
+      <article class="project reveal">
+       <div class="project-visual visual-pet">
+        <img alt="NOVA Tech for Good project screenshot" class="project-photo photo-top" src="project-nova.png"/>
+       </div>
+       <div class="project-info">
+        <div class="project-title-row">
+         <h3>
+          Nova, Tech For Good
+         </h3>
+
+        </div>
+        <p>
+         Organization-wide visual identity redesign, including digital marketing, website revamp, and product development.
+        </p>
+        <div class="tags">
+         <span class="tag">
+          Branding
+         </span>
+         <span class="tag">
+          Web Design
+         </span>
+         <span class="tag">
+          Marketing
+         </span>
+        </div>
+       </div>
+      </article>
+      <article class="project reveal">
+       <div class="project-visual visual-pet">
+        <img alt="Just Replay project screenshot" class="project-photo photo-top" src="project-just-replay.png"/>
+       </div>
+       <div class="project-info">
+        <div class="project-title-row">
+         <h3>
+          Inclusive Exercise Platform
+         </h3>
+
+        </div>
+        <p>
+         Just Replay, a guided movement web-app for low-intensity movements targeting recovery and wellness for the eldery and disabled.
+        </p>
+        <div class="tags">
+         <span class="tag">
+          Product Design
+         </span>
+         <span class="tag">
+          User Research
+         </span>
+         <span class="tag">
+          Product Pitch
+         </span>
+        </div>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="wrap footer-row">
+    <a class="brand" href="#home" style="color:#fff">
+     LINDA WANG
+    </a>
+    <div class="footer-links">
+     <a href="#home">
+      Home
+     </a>
+     <a href="#work">
+      Work
+     </a>
+     <a href="art.html">
+      Art
+     </a>
+     <a href="about.html">
+      About
+     </a>
+     <a href="mailto:lindawang1@gmail.com">
+      Contact
+     </a>
+     <a href="https://www.linkedin.com/in/lindazwang/" rel="noreferrer" target="_blank">
+      LinkedIn ↗
+     </a>
+     <a href="https://github.com/lindawangz" rel="noreferrer" target="_blank">
+      GitHub ↗
+     </a>
+    </div>
+    <div class="copyright">
+     ©
+     <span id="year">
+     </span>
+     LINDA WANG
+    </div>
+   </div>
+  </footer>
+  <script>
+   const toggle=document.querySelector('.menu-toggle');const links=document.querySelector('.nav-links');toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));document.getElementById('year').textContent=new Date().getFullYear();const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+ </body>
+</html>

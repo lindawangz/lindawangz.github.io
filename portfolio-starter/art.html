@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#52796b">
+    <meta name="description" content="A collection of personal artwork.">
+
+    <title>Art — Linda Wang</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --paper: #f6f7f3;
+            --white: #ffffff;
+            --ink: #1e2924;
+            --muted: #747d77;
+            --sage: #52796b;
+            --deep: #31594c;
+            --lime: #d8ff86;
+            --line: #dfe5df;
+            --max: 1160px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "DM Sans", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 64px));
+            margin-inline: auto;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .nav-wrap {
+            position: fixed;
+            top: 26px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            width: min(780px, calc(100% - 40px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 10px 12px 10px 20px;
+
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 8px 28px #18382b0b;
+
+            backdrop-filter: blur(12px);
+
+            font-size: 13px;
+        }
+
+        .brand {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #31594c;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            opacity: 1;
+        }
+
+        .nav-cta {
+            padding: 10px 17px;
+            border-radius: 999px;
+            background: var(--deep);
+            color: white;
+            font-size: 12px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            font-size: 22px;
+            color: var(--ink);
+        }
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        main {
+            padding: 150px 0 110px;
+        }
+
+        .kicker {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            font-weight: 600;
+        }
+
+        .page-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 35px;
+            margin-bottom: 45px;
+        }
+
+        .page-head h1 {
+            font: 600 clamp(48px, 8vw, 92px) / 0.98 "Manrope", sans-serif;
+            letter-spacing: -0.075em;
+            margin: 16px 0 0;
+        }
+
+        .page-head p {
+            max-width: 350px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0 0 5px;
+        }
+
+        /* =========================
+           ART GALLERY
+        ========================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 38px 24px;
+        }
+
+        .art-card {
+            min-width: 0;
+        }
+
+        .art-open {
+            display: block;
+            width: 100%;
+
+            border: 0;
+            padding: 0;
+
+            background: none;
+            text-align: left;
+
+            cursor: zoom-in;
+
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .artwork {
+            aspect-ratio: 4 / 3;
+
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 15px;
+            border: 1px solid #dfe5df;
+
+            background: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                transform 0.45s cubic-bezier(0.2, 0.75, 0.25, 1),
+                box-shadow 0.3s;
+        }
+
+       .artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+        .art-open:hover .artwork {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px #1e29241a;
+        }
+
+        .art-meta {
+            padding: 15px 2px 0;
+        }
+
+        .art-meta h2 {
+            font: 600 19px "Manrope", sans-serif;
+            letter-spacing: -0.035em;
+            margin: 0 0 6px;
+        }
+
+        .art-meta p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: var(--deep);
+            color: #dce8df;
+            padding: 25px 0;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer a:hover {
+            color: var(--lime);
+        }
+
+        .copyright {
+            opacity: 0.65;
+        }
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+
+            background: rgba(9, 17, 13, 0.88);
+            backdrop-filter: blur(8px);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 28px;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-panel {
+            width: min(1100px, 100%);
+            max-height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lightbox-art {
+            width: auto;
+            height: auto;
+            max-width: none;
+            max-height: none;
+            aspect-ratio: auto;
+            overflow: visible;
+
+            border: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .lightbox-art img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: calc(100vw - 56px);
+            max-height: calc(100vh - 150px);
+            object-fit: contain;
+        }
+        .lightbox-caption {
+            color: #fff;
+            text-align: center;
+        }
+
+        .lightbox-caption strong {
+            display: block;
+            font: 600 18px "Manrope";
+            margin-bottom: 5px;
+        }
+
+        .lightbox-caption span {
+            font-size: 13px;
+            color: #d1d9d3;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 22px;
+            right: 26px;
+
+            border: 1px solid #ffffff70;
+            background: #ffffff12;
+
+            color: #fff;
+
+            width: 44px;
+            height: 44px;
+
+            border-radius: 50%;
+
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .lightbox-hint {
+            font-size: 11px;
+            color: #d1d9d3;
+            margin-top: 2px;
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 850px) {
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .page-head {
+                display: block;
+            }
+
+            .page-head p {
+                margin-top: 22px;
+                max-width: 520px;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+            .wrap {
+                width: calc(100% - 36px);
+            }
+
+            .nav-wrap {
+                top: 14px;
+            }
+
+            .nav {
+                width: calc(100% - 28px);
+                padding: 10px 13px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+                top: 57px;
+                left: 0;
+                right: 0;
+
+                padding: 18px;
+
+                background: #fff;
+                border: 1px solid var(--line);
+                border-radius: 18px;
+
+                box-shadow: 0 15px 30px #1d34251a;
+
+                flex-direction: column;
+                align-items: stretch;
+                gap: 18px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 4px;
+            }
+
+            .nav-cta {
+                display: inline-flex;
+                justify-content: center;
+            }
+
+            main {
+                padding: 125px 0 75px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .artwork {
+                aspect-ratio: 4 / 3;
+            }
+
+            .footer-row {
+                flex-wrap: wrap;
+            }
+
+            .footer-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .copyright {
+                width: 100%;
+            }
+
+            .lightbox {
+                padding: 16px;
+            }
+
+            .lightbox-art img {
+                max-width: calc(100vw - 32px);
+                max-height: calc(100vh - 130px);
+            }
+            .lightbox-close {
+                top: 12px;
+                right: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header class="nav-wrap">
+        <nav class="nav" aria-label="Main navigation">
+
+            <a class="brand" href="index.html#home">
+                LINDA WANG
+                <span style="color:#8ca99a;"></span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html#work">Work</a>
+
+                <a href="art.html" aria-current="page">
+                    Art
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a
+                    class="nav-cta"
+                    href="mailto:lindawang1@gmail.com"
+                >
+                    Contact
+                </a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main>
+
+        <div class="wrap">
+
+            <header class="page-head">
+
+                <div>
+
+                    <div class="kicker">
+                        A collection of personal work
+                    </div>
+
+                    <h1>
+                        Art &amp; experiments.
+                    </h1>
+
+                </div>
+
+                <p>
+                    A small gallery of visual explorations.
+                    Select any piece to view it larger.
+                </p>
+
+            </header>
+
+
+            <!-- =========================
+                 ARTWORK GALLERY
+            ========================= -->
+
+            <section
+                class="gallery"
+                aria-label="Artwork gallery"
+            >
+
+                <!-- 1. LOGO BUTTON -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Inner Grappling"
+                        data-image="Inner Grappling (2).jpg"
+                        data-title="Inner Grappling"
+                        data-medium="Digital"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="Inner Grappling (2).jpg"
+                                alt="Inner Grappling (2)"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Inner Grappling
+                        </h2>
+
+                        <p>
+                            Digital 
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 2. PLANET -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Infected SyStems"
+                        data-image="Infected SyStems (1).jpg"
+                        data-title="Infected SyStems"
+                        data-medium="Digital"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="Infected SyStems (1).jpg"
+                                alt="Infected SyStems(1)"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Infected SyStems
+                        </h2>
+
+                        <p>
+                            Digital 
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 3. VECTOR STAR -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Salvation"
+                        data-image="Salvation (2).jpg"
+                        data-title="Salvation"
+                        data-medium="Acrylic, Digital, Plastic"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="Salvation (2).jpg"
+                                alt="Salvation (2)"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Salvation
+                        </h2>
+
+                        <p>
+                            Acrylic, Digital, Plastic
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 4. RING -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Eden of Choice"
+                        data-image="Eden of Choice (1).jpeg"
+                        data-title="Eden of Choice"
+                        data-medium="Ceramics, Digital"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="Eden of Choice (1).jpeg"
+                                alt="Eden of Choice(1)"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Eden of Choice
+                        </h2>
+
+                        <p>
+                            Ceramics, Digital
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 5. ERASURE -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Erasure"
+                        data-image="Erasure (Process) (1).PNG"
+                        data-title="Erasure"
+                        data-medium="Printmaking"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="Erasure (Process) (1).PNG"
+                                alt="Erasure"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Erasure
+                        </h2>
+
+                        <p>
+                            Printmaking
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 6. JOURNEY -->
+
+                <article class="art-card">
+
+                    <button
+                        class="art-open"
+                        aria-label="Enlarge Journey"
+                        data-image="IMG_4840 (1).PNG"
+                        data-title="Journey"
+                        data-medium="Digital"
+                    >
+
+                        <div class="artwork">
+                            <img
+                                src="IMG_4840 (1).PNG"
+                                alt="Journey"
+                            >
+                        </div>
+
+                    </button>
+
+                    <div class="art-meta">
+
+                        <h2>
+                            Journey
+                        </h2>
+
+                        <p>
+                            Digital
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="wrap footer-row">
+
+            <a
+                class="brand"
+                href="index.html#home"
+                style="color:#fff;"
+            >
+                LINDA WANG
+            </a>
+
+            <div class="footer-links">
+
+                <a href="index.html#home">
+                    Home
+                </a>
+
+                <a href="index.html#work">
+                    Work
+                </a>
+
+                <a href="art.html">
+                    Art
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="mailto:lindawang1@gmail.com">
+                    Contact
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/lindazwang/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    LinkedIn ↗
+                </a>
+
+                <a
+                    href="https://github.com/lindawangz"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    GitHub ↗
+                </a>
+
+            </div>
+
+            <div class="copyright">
+                <span id="year"></span> Linda Wang
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         LIGHTBOX
+    ========================= -->
+
+    <div
+        class="lightbox"
+        id="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Artwork enlarged view"
+    >
+
+        <button
+            class="lightbox-close"
+            aria-label="Close enlarged artwork"
+        >
+            ×
+        </button>
+
+        <div class="lightbox-panel">
+
+            <div
+                class="artwork lightbox-art"
+                id="lightbox-art"
+            >
+                <img
+                    id="lightbox-image"
+                    src=""
+                    alt=""
+                >
+            </div>
+
+            <div class="lightbox-caption">
+
+                <strong id="lightbox-title"></strong>
+
+                <span id="lightbox-medium"></span>
+
+            </div>
+
+            <div class="lightbox-hint">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* Mobile navigation */
+
+        const toggle = document.querySelector(".menu-toggle");
+        const links = document.querySelector(".nav-links");
+
+        toggle.addEventListener("click", () => {
+
+            const open = links.classList.toggle("open");
+
+            toggle.setAttribute(
+                "aria-expanded",
+                String(open)
+            );
+
+            toggle.textContent = open ? "×" : "☰";
+
+        });
+
+
+        links.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                links.classList.remove("open");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                toggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        /* Footer year */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* Artwork lightbox */
+
+        const box = document.getElementById("lightbox");
+
+        const large = document.getElementById("lightbox-art");
+
+        const largeImage =
+            document.getElementById("lightbox-image");
+
+        const title =
+            document.getElementById("lightbox-title");
+
+        const medium =
+            document.getElementById("lightbox-medium");
+
+
+        function closeBox() {
+
+            box.classList.remove("open");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        document
+            .querySelectorAll(".art-open")
+            .forEach((button) => {
+
+                button.addEventListener("click", () => {
+
+                    largeImage.src =
+                        button.dataset.image;
+
+                    largeImage.alt =
+                        button.dataset.title;
+
+                    title.textContent =
+                        button.dataset.title;
+
+                    medium.textContent =
+                        button.dataset.medium;
+
+                    box.classList.add("open");
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                    box
+                        .querySelector(".lightbox-close")
+                        .focus();
+
+                });
+
+            });
+
+
+        /* Close button */
+
+        box
+            .querySelector(".lightbox-close")
+            .addEventListener("click", closeBox);
+
+
+        /* Click outside artwork to close */
+
+        box.addEventListener("click", (event) => {
+
+            if (event.target === box) {
+                closeBox();
+            }
+
+        });
+
+
+        /* Escape key */
+
+        document.addEventListener("keydown", (event) => {
+
+            if (
+                event.key === "Escape" &&
+                box.classList.contains("open")
+            ) {
+                closeBox();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

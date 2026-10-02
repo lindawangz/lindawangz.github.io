@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#52796b">
+  <meta name="description" content="Mending Kids medical inventory system case study by Linda Wang.">
+  <title>Mending Kids — Medical Inventory System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f6f7f3;
+      --white: #fff;
+      --ink: #1e2924;
+      --muted: #6f7973;
+      --sage: #52796b;
+      --deep: #31594c;
+      --lime: #d8ff86;
+      --lavender: #eee8f8;
+      --line: #dfe5df;
+      --max: 1080px;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+    /* Navigation */
+    .nav-wrap {
+      position: fixed;
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+    .nav {
+      width: min(780px, calc(100% - 32px));
+      margin: auto;
+      padding: 10px 12px 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 8px 28px rgba(24,56,43,.07);
+      backdrop-filter: blur(12px);
+      font-size: 13px;
+    }
+    .brand { font-weight: 700; color: var(--deep); letter-spacing: -.03em; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { opacity: .78; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: var(--deep);
+      color: white;
+      font-size: 12px;
+      opacity: 1 !important;
+    }
+    .menu-toggle { display: none; border: 0; background: none; font-size: 22px; }
+
+    /* Hero */
+    .hero { padding: 145px 0 70px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 55px;
+      align-items: center;
+    }
+    .eyebrow, .kicker {
+      margin-bottom: 14px;
+      color: var(--sage);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(45px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -.07em;
+    }
+    .hero-copy {
+      max-width: 450px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 24px;
+    }
+    .pill {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #59645e;
+      font-size: 11px;
+      background: white;
+    }
+    .hero-image {
+      padding: 8px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(32,57,45,.08);
+    }
+    .hero-image img { border-radius: 14px; }
+
+    /* General sections */
+    .section { padding: 82px 0; }
+    .section.alt { background: white; }
+    .section-head { margin-bottom: 35px; }
+    h2 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.06;
+      letter-spacing: -.06em;
+    }
+    .intro {
+      max-width: 620px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* Context + problem */
+    .context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .context-card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    .context-card h3 { margin: 0 0 9px; font-size: 19px; }
+    .context-card p { margin: 0 0 10px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .context-card p:last-child { margin-bottom: 0; }
+    .context-card p strong { display: inline-block; min-width: 92px; color: var(--ink); font-weight: 600; }
+
+    .problem {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: start;
+    }
+    .problem-list { display: grid; gap: 12px; }
+    .problem-item {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+    }
+    .problem-item strong { display: block; margin-bottom: 6px; font-size: 14px; }
+    .problem-item span { color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    /* Research */
+    .research {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 45px;
+      align-items: start;
+    }
+    .research-list { border-top: 1px solid var(--line); }
+    .research-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .research-item strong { display: block; margin-bottom: 5px; font-size: 14px; }
+    .research-item span { color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .research-note {
+      padding: 27px;
+      border-radius: var(--radius);
+      background: #dfe9e2;
+    }
+    .research-note h3 { margin: 0 0 10px; font-size: 20px; }
+    .research-note p { margin: 0; color: var(--deep); font-size: 13px; line-height: 1.75; }
+    blockquote {
+      margin: 28px 0 0;
+      padding: 20px 22px;
+      border-left: 3px solid var(--sage);
+      border-radius: 0 14px 14px 0;
+      background: var(--paper);
+      font: 500 16px/1.55 'Manrope', sans-serif;
+      letter-spacing: -.02em;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font: 400 11px/1.5 'DM Sans', sans-serif;
+      font-style: normal;
+    }
+
+    /* Images / process */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .image-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 14px 35px rgba(32,57,45,.05);
+    }
+    .image-card img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .image-card.wide { grid-column: 1 / -1; }
+    .image-card.wide img { aspect-ratio: 2.15 / 1; object-fit: contain; background: #f8f9fc; }
+    .caption { padding: 13px 16px 15px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+
+    .process-row {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 25px;
+    }
+    .process-copy { padding: 24px; border-radius: var(--radius); background: var(--paper); }
+    .process-copy h3 { margin: 0 0 10px; font-size: 20px; }
+    .process-copy p { margin: 0 0 15px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .process-copy ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
+    /* Final product */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .feature-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    .feature-card.no-image { display: block; }
+    .feature-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: white; }
+    .feature-copy { padding: 24px 26px; }
+    .feature-copy h3 { margin: 0 0 7px; font-size: 18px; }
+    .feature-copy p { margin: 0; max-width: 58ch; color: var(--muted); font-size: 12px; line-height: 1.65; }
+
+    /* Testing + metrics */
+    .testing { background: var(--deep); color: white; }
+    .testing .kicker { color: var(--lime); }
+    .testing .intro { color: #dce8df; }
+    .testing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .testing-card { overflow: hidden; border-radius: var(--radius); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); }
+    .testing-card img { aspect-ratio: 16 / 9; object-fit: cover; background: white; }
+    .testing-copy { padding: 20px; }
+    .testing-copy h3 { margin: 0 0 7px; font-size: 18px; }
+    .testing-copy p { margin: 0; color: #dce8df; font-size: 12px; line-height: 1.65; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .metric {
+      padding: 25px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .metric strong { display: block; color: var(--deep); font: 700 45px/1 'Manrope', sans-serif; letter-spacing: -.06em; }
+    .metric span { display: block; margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .supporting {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .supporting div { padding: 18px; border-radius: 15px; background: rgba(255,255,255,.65); border: 1px solid var(--line); }
+    .supporting strong { display: block; color: var(--deep); font: 700 24px/1 'Manrope', sans-serif; }
+    .supporting span { display: block; margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+
+    .takeaway {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 55px;
+      align-items: start;
+    }
+    .takeaway p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .takeaways { display: grid; gap: 10px; }
+    .takeaways div { padding: 17px 19px; border: 1px solid var(--line); border-radius: 14px; background: white; font-size: 13px; }
+
+    .closing { padding: 75px 0; background: var(--deep); color: white; text-align: center; }
+    .closing h2 { margin: 0 auto 20px; color: white; }
+    .closing p { max-width: 470px; margin: 0 auto 24px; color: #dce8df; font-size: 13px; line-height: 1.7; }
+    .closing a { display: inline-flex; padding: 12px 17px; border-radius: 999px; background: var(--lime); color: var(--deep); font-size: 12px; font-weight: 700; }
+
+    .footer { padding: 24px 0; background: #284a40; color: #dce8df; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; align-items: center; font-size: 11px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer a:hover { color: var(--lime); }
+    .copyright { opacity: .65; }
+
+    @media (max-width: 820px) {
+      .wrap { width: min(100% - 32px, var(--max)); }
+      .nav-wrap { top: 14px; }
+      .nav { width: calc(100% - 24px); }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 57px; left: 0; right: 0; padding: 17px; background: white; border: 1px solid var(--line); border-radius: 17px; flex-direction: column; align-items: stretch; gap: 14px; }
+      .nav-links.open { display: flex; }
+      .nav-cta { text-align: center; }
+      .hero-grid, .problem, .research, .process-row, .takeaway { grid-template-columns: 1fr; }
+      .context, .image-grid, .feature-grid, .testing-grid, .metrics, .supporting { grid-template-columns: 1fr; }
+      .feature-card { grid-template-columns: 1fr; }
+      .image-card.wide { grid-column: auto; }
+      .section { padding: 65px 0; }
+      .hero { padding-top: 125px; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">LINDA WANG</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="index.html#work">Work</a>
+        <a href="art.html">Art</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="mailto:lindawang1@gmail.com">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Product Design · UX Research · Data Systems</div>
+          <h1>Mending Kids<br>Medical Inventory</h1>
+          <p class="hero-copy">A web-based inventory system that helps Mending Kids keep track of medical supplies, prepare missions, and spend less time working around a spreadsheet.</p>
+          <div class="meta">
+            <span class="pill">Mending Kids</span>
+            <span class="pill">Product Design</span>
+            <span class="pill">UX Research</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="project-mending-kids.png" alt="Preview of the Mending Kids medical inventory system">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT INFO -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Project Info</div>
+          <h2>Project details</h2>
+        </div>
+        <div class="context">
+          <article class="context-card">
+            <h3>Project Info</h3>
+            <p><strong>Role</strong> Designer</p>
+            <p><strong>Client</strong> Mending Kids</p>
+            <p><strong>Timeline</strong> Spring 2025</p>
+            <p><strong>Team Size</strong> 4 Designers, 1 PM, 7 Devs</p>
+          </article>
+          <article class="context-card">
+            <h3>Tech Stack</h3>
+            <p><strong>Frontend</strong> React, Next.js, TypeScript</p>
+            <p><strong>Backend</strong> Supabase (SQL)</p>
+            <p><strong>Deployment</strong> Vercel</p>
+            <p><strong>UI Library</strong> Atlassian Atlaskit</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">01 · Context</div>
+          <h2>Medical supplies were being managed through a process that had grown hard to maintain.</h2>
+          <p class="intro">Mending Kids provides free surgical care to children around the world. Their team manages donated medical supplies and prepares them for missions, so inventory has to stay accurate from donation all the way to deployment.</p>
+        </div>
+        <div class="context">
+          <article class="context-card">
+            <h3>10,000+ items</h3>
+            <p>The existing inventory lived in a large Google Sheet, making it difficult to search, update, and keep consistent.</p>
+          </article>
+          <article class="context-card">
+            <h3>More than inventory</h3>
+            <p>The team also had to handle missions, packing, customs records, expiration dates, and annual accounting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section">
+      <div class="wrap problem">
+        <div>
+          <div class="kicker">02 · Problem</div>
+          <h2>The real problem was the workflow around the spreadsheet.</h2>
+          <p class="intro">We wanted to make the day-to-day work easier without losing the information the organization relied on.</p>
+        </div>
+        <div class="problem-list">
+          <div class="problem-item"><strong>Finding and updating supplies</strong><span>A huge spreadsheet made everyday inventory work slower and more error-prone.</span></div>
+          <div class="problem-item"><strong>Keeping track of mission supplies</strong><span>Staff had to manually connect inventory items to missions and packing needs.</span></div>
+          <div class="problem-item"><strong>Handling accounting and audits</strong><span>Donation history and market value had to be tracked, even though they were not always part of the same workflow.</span></div>
+          <div class="problem-item"><strong>Keeping physical records</strong><span>Mission information still needed to travel with physical bags and through customs.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">03 · User Research</div>
+          <h2>Talking through the real process changed what we built.</h2>
+          <p class="intro">We walked through existing tasks with stakeholders and focused on where the current process became frustrating or repetitive.</p>
+        </div>
+        <div class="research">
+          <div class="research-list">
+            <div class="research-item"><strong>Market value did not belong in every task.</strong><span>It mattered for year-end accounting, but it could get in the way of day-to-day logistics. We made it optional.</span></div>
+            <div class="research-item"><strong>Auditing needed its own workflow.</strong><span>The team needed to look back at what had been donated in a given year and keep those records organized.</span></div>
+            <div class="research-item"><strong>The digital product still had to support physical work.</strong><span>Mission supplies are packed into bags and moved through customs, so printing and downloadable records mattered.</span></div>
+            <div class="research-item"><strong>Missions needed more structure.</strong><span>Instead of one long list, users wanted to organize supplies into practical groups for packing and deployment.</span></div>
+          </div>
+          <aside class="research-note">
+            <h3>What we took away</h3>
+            <p>We stopped thinking of the project as “a better inventory table.” It needed to connect inventory, missions, packing, and the work that happens after a mission.</p>
+          </aside>
+        </div>
+        <blockquote>
+          “The market value isn't something we need until like year end...”
+          <cite>Edin Le · stakeholder feedback</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">04 · From Research to Design</div>
+          <h2>We mapped the workflow first, then decided what the interface needed.</h2>
+          <p class="intro">The team explored different ways to create missions, reuse information from past missions, assign supplies, and close out inventory afterward.</p>
+        </div>
+        <div class="image-card">
+          <img src="mending-kids-case-study-assets/workflow-iterations.png" alt="Workflow diagram exploring mission creation, inventory assignment, and completion">
+          <div class="caption">Early workflow mapping helped us see where mission creation and inventory management were getting mixed together.</div>
+        </div>
+        <div class="process-row">
+          <div class="process-copy">
+            <h3>Turning findings into decisions</h3>
+            <p>We used a solution matrix to decide which changes were worth prioritizing.</p>
+            <ul>
+              <li>Make market value optional.</li>
+              <li>Separate “assign item” from general inventory actions.</li>
+              <li>Support printable mission and bag records.</li>
+              <li>Organize mission supplies into smaller groups.</li>
+            </ul>
+          </div>
+          <div class="image-card">
+            <img src="mending-kids-case-study-assets/slide-14.jpg" alt="Solution matrix showing design ideas by effort and impact">
+            <div class="caption">Solution matrix used to prioritize ideas by effort and impact.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL PRODUCT -->
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">05 · Final Product</div>
+          <h2>A single place to manage inventory and the missions that use it.</h2>
+          <p class="intro">The final system brought the most important pieces of the workflow into one interface.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <img src="mending-kids-case-study-assets/inventory.png" alt="Mending Kids inventory management interface with the add item side panel">
+            <div class="feature-copy"><h3>Inventory management</h3><p>Search and track supplies with item details, quantities, status, missions, and expiration information in one place.</p></div>
+          </article>
+          <article class="feature-card">
+            <img src="mending-kids-case-study-assets/slide-10.jpg" alt="Mending Kids inventory dashboard showing supply records and status information">
+            <div class="feature-copy"><h3>Dashboard + alerts</h3><p>A high-level view surfaces things that need attention, including expiration and low-stock information.</p></div>
+          </article>
+          <article class="feature-card">
+            <img src="mending-kids-case-study-assets/missions.png" alt="Mending Kids missions dashboard showing mission cards and filters">
+            <div class="feature-copy"><h3>Missions</h3><p>Mission workflows connect supplies to real deployments instead of treating inventory as a separate list.</p></div>
+          </article>
+          <article class="feature-card no-image">
+            <div class="feature-copy"><h3>Designed around the team</h3><p>The interface reflects the exceptions, paperwork, and handoffs that came up during research. Instead of forcing every task into the same workflow, the system supports the way the team actually works across inventory, missions, packing, and follow-up.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTING -->
+    <section class="section testing">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">06 · User Testing</div>
+          <h2>We tested the prototype against real tasks.</h2>
+          <p class="intro">We used an unmoderated Maze study and moderated testing with Mary. Tasks were timed so we could compare how people moved through the new workflow.</p>
+        </div>
+        <div class="testing-grid">
+          <article class="testing-card">
+            <img src="mending-kids-case-study-assets/slide-12.jpg" alt="Mending Kids user testing setup and heat maps">
+            <div class="testing-copy"><h3>Unmoderated testing</h3><p>Users completed tasks in the Vercel prototype. We looked at completion, timing, and heat maps.</p></div>
+          </article>
+          <article class="testing-card">
+            <img src="mending-kids-case-study-assets/slide-13.jpg" alt="Mending Kids testing findings and pain points">
+            <div class="testing-copy"><h3>What changed after testing</h3><p>Testing surfaced missing flexibility around market value, audits, printing, and editing item information.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">07 · Results</div>
+          <h2>The final prototype gave us a few clear signals.</h2>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>98.2%</strong><span>mission task success rate</span></div>
+          <div class="metric"><strong>81.8%</strong><span>of users demonstrated perfect mental-model alignment</span></div>
+          <div class="metric"><strong>22.7s</strong><span>average time to find nearly-expiring items using the Dashboard</span></div>
+        </div>
+        <div class="supporting">
+          <div><strong>3.2/5</strong><span>subjective task-ease rating among the non-expert demographic</span></div>
+          <div><strong>2.9/5</strong><span>reported familiarity rating among the non-expert demographic</span></div>
+          <div><strong>25.6%</strong><span>of users independently used advanced contextual shortcuts</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAKEAWAY -->
+    <section class="section alt">
+      <div class="wrap takeaway">
+        <div>
+          <div class="kicker">08 · Takeaway</div>
+          <h2>We designed around the work, not the spreadsheet.</h2>
+        </div>
+        <div>
+          <p>The biggest lesson from this project was that the inventory itself was only one part of the problem. Once we understood how supplies move through donations, missions, packing, customs, and accounting, the product started to make much more sense.</p>
+          <div class="takeaways">
+            <div>Keep information flexible when it belongs to a later step.</div>
+            <div>Design for physical workflows even when the product is digital.</div>
+            <div>Use research to uncover missing workflows, not just visual problems.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <h2>See the rest of my work.</h2>
+        <p>Explore the World Map, Nova, and Just Replay projects.</p>
+        <a href="index.html#work">Back to selected work ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="index.html" style="color:#fff">LINDA WANG</a>
+      <div class="footer-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#work">Work</a>
+        <a href="art.html">Art</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="copyright">© <span id="year"></span> LINDA WANG</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '×' : '☰';
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
